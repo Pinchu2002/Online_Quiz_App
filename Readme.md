@@ -572,7 +572,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Authors
 
-- **Priyanshu Chhabda** - *Initial work* - [YourGitHub](https://github.com/Pinchu2002)
+- **Priyanshu Chhabda** - *Initial work* - [Pinchu2002](https://github.com/Pinchu2002)
 
 ---
 
