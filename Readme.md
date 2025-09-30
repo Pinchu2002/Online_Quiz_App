@@ -563,19 +563,19 @@ We welcome contributions! Please follow these steps:
 - Update documentation as needed
 
 ---
-
+<!-- 
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
+--- -->
 
 ## 👥 Authors
 
 - **Priyanshu Chhabda** - *Initial work* - [Pinchu2002](https://github.com/Pinchu2002)
 
 ---
-
+<!-- 
 ## 🙏 Acknowledgments
 
 - Thanks to all contributors
@@ -595,7 +595,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Social sharing features
 - [ ] Multi-language support
 
----
+--- -->
 
 ## 📊 Project Status
 
