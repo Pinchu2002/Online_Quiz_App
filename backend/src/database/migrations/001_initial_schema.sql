@@ -1,0 +1,49 @@
+-- Initial Schema
+
+CREATE TABLE IF NOT EXISTS quizzes (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT NOT NULL,
+  description TEXT,
+  time_limit INTEGER,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS questions (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  quiz_id INTEGER NOT NULL,
+  text TEXT NOT NULL,
+  correct_option_id INTEGER NOT NULL,
+  points INTEGER DEFAULT 1,
+  order_index INTEGER NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (quiz_id) REFERENCES quizzes (id)
+);
+
+CREATE TABLE IF NOT EXISTS options (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  question_id INTEGER NOT NULL,
+  text TEXT NOT NULL,
+  order_index INTEGER NOT NULL,
+  FOREIGN KEY (question_id) REFERENCES questions (id)
+);
+
+CREATE TABLE IF NOT EXISTS user_attempts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  quiz_id INTEGER NOT NULL,
+  score INTEGER NOT NULL,
+  total_questions INTEGER NOT NULL,
+  correct_answers INTEGER NOT NULL,
+  completed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (quiz_id) REFERENCES quizzes (id)
+);
+
+CREATE TABLE IF NOT EXISTS user_answers (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  attempt_id INTEGER NOT NULL,
+  question_id INTEGER NOT NULL,
+  selected_option_id INTEGER NOT NULL,
+  is_correct BOOLEAN NOT NULL,
+  FOREIGN KEY (attempt_id) REFERENCES user_attempts (id),
+  FOREIGN KEY (question_id) REFERENCES questions (id)
+);

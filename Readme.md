@@ -572,7 +572,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Authors
 
-- **Your Name** - *Initial work* - [YourGitHub](https://github.com/yourusername)
+- **Priyanshu Chhabda** - *Initial work* - [YourGitHub](https://github.com/Pinchu2002)
 
 ---
 
@@ -581,12 +581,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Thanks to all contributors
 - Inspired by modern quiz applications
 - Built with best practices in mind
-
----
-
-## 📞 Support
-
-For support, email support@quizapp.com or open an issue on GitHub.
 
 ---
 
@@ -610,5 +604,3 @@ For support, email support@quizapp.com or open an issue on GitHub.
 **Last Updated**: September 2025
 
 ---
-
-Made with ❤️ by the Quiz App Team

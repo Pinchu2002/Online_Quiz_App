@@ -1,0 +1,350 @@
+# ==========================================
+# Node.js & npm
+# ==========================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# ==========================================
+# Environment Variables
+# ==========================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# ==========================================
+# Build & Distribution
+# ==========================================
+build/
+dist/
+out/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+.vuepress/dist/
+
+# Frontend build
+frontend/build/
+frontend/dist/
+
+# Backend build
+backend/build/
+backend/dist/
+
+# ==========================================
+# Database Files
+# ==========================================
+*.sqlite
+*.sqlite3
+*.db
+database.sqlite
+backend/database.sqlite
+backend/*.sqlite
+
+# Database backups
+*.sql.backup
+*.db.backup
+
+# ==========================================
+# Logs
+# ==========================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime logs
+combined.log
+error.log
+access.log
+
+# ==========================================
+# Documentation PDFs
+# ==========================================
+*.pdf
+**/*.pdf
+docs/*.pdf
+docs/**/*.pdf
+
+# Exclude specific PDFs if needed (uncomment to allow)
+# !docs/important-doc.pdf
+
+# ==========================================
+# Operating System Files
+# ==========================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ==========================================
+# IDE & Editor Files
+# ==========================================
+
+# VSCode
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains IDEs (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.*.sw[a-z]
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# ==========================================
+# Testing & Coverage
+# ==========================================
+coverage/
+*.lcov
+.nyc_output/
+.grunt/
+.lock-wscript
+
+# Jest
+jest-coverage/
+__tests__/coverage/
+
+# ==========================================
+# Temporary Files
+# ==========================================
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+
+# ==========================================
+# Package Manager Files
+# ==========================================
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Optional: Keep lock files (comment out above if needed)
+# !package-lock.json
+# !yarn.lock
+
+# ==========================================
+# React & Frontend Specific
+# ==========================================
+
+# Production build
+/build
+/dist
+
+# Testing
+/coverage
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Create React App
+.eslintcache
+
+# ==========================================
+# Tailwind CSS
+# ==========================================
+# Uncomment if using JIT mode with file watching
+# .tailwind.css
+
+# ==========================================
+# Dependencies
+# ==========================================
+jspm_packages/
+bower_components/
+web_modules/
+
+# ==========================================
+# TypeScript (if used in future)
+# ==========================================
+*.tsbuildinfo
+*.d.ts.map
+
+# ==========================================
+# Optional npm cache directory
+# ==========================================
+.npm
+
+# ==========================================
+# Optional eslint cache
+# ==========================================
+.eslintcache
+
+# ==========================================
+# Optional stylelint cache
+# ==========================================
+.stylelintcache
+
+# ==========================================
+# Microbundle cache
+# ==========================================
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# ==========================================
+# Optional REPL history
+# ==========================================
+.node_repl_history
+
+# ==========================================
+# Output of 'npm pack'
+# ==========================================
+*.tgz
+
+# ==========================================
+# Serverless directories
+# ==========================================
+.serverless/
+
+# ==========================================
+# FuseBox cache
+# ==========================================
+.fusebox/
+
+# ==========================================
+# DynamoDB Local files
+# ==========================================
+.dynamodb/
+
+# ==========================================
+# TernJS port file
+# ==========================================
+.tern-port
+
+# ==========================================
+# Stores VSCode versions used for testing
+# ==========================================
+.vscode-test
+
+# ==========================================
+# Yarn Integrity file
+# ==========================================
+.yarn-integrity
+
+# ==========================================
+# Webpack
+# ==========================================
+.webpack/
+
+# ==========================================
+# Electron
+# ==========================================
+dist-electron/
+
+# ==========================================
+# Storybook
+# ==========================================
+storybook-static/
+
+# ==========================================
+# Debug
+# ==========================================
+debug/
+*.debug
+
+# ==========================================
+# Certificates & Keys
+# ==========================================
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+
+# ==========================================
+# Backup files
+# ==========================================
+*.bak
+*.backup
+*.old
+*~
+
+# ==========================================
+# Custom Project Specific
+# ==========================================
+
+# Uploaded files (if any)
+uploads/
+public/uploads/
+
+# User generated content
+user-data/
+user-uploads/
+
+# Cache directories
+.cache/
+.temp/
+
+# ==========================================
+# Documentation (except markdown)
+# ==========================================
+# Keep markdown files, ignore PDFs
+!*.md
+!README.md
+!CHANGELOG.md
+!CONTRIBUTING.md
+!LICENSE.md
+
+# ==========================================
+# End of .gitignore
+# ==========================================
