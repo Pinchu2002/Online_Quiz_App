@@ -47,7 +47,7 @@ function runMigration() {
       console.log('✅ Database tables created successfully');
       
       // Run seed data in development
-      if (env === 'development') {
+      if (env === 'development' || process.env.ENABLE_SEED === 'true') {
         const seedPath = path.join(__dirname, 'seeds', 'sample_quiz.sql');
         if (fs.existsSync(seedPath)) {
           const seed = fs.readFileSync(seedPath, 'utf8');
