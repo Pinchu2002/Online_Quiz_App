@@ -24,10 +24,45 @@ const db = new sqlite3.Database(dbConfig.storage, (err) => {
         runMigration();
       } else {
         console.log('✅ Database tables exist');
+        // Check if data exists
+        checkAndSeedData();
       }
     });
   }
 });
+
+// Function to check if data exists and seed if needed
+function checkAndSeedData() {
+  if (env === 'development' || process.env.ENABLE_SEED === 'true') {
+    db.get("SELECT COUNT(*) as count FROM quizzes", (err, row) => {
+      if (err) {
+        console.error('Error checking quiz data:', err.message);
+      } else if (row.count === 0) {
+        console.log('⚠️  No quiz data found, inserting seed data...');
+        runSeedData();
+      } else {
+        console.log(`✅ Database has ${row.count} quiz(es)`);
+      }
+    });
+  }
+}
+
+// Function to run seed data
+function runSeedData() {
+  const seedPath = path.join(__dirname, 'seeds', 'sample_quiz.sql');
+  if (fs.existsSync(seedPath)) {
+    const seed = fs.readFileSync(seedPath, 'utf8');
+    db.exec(seed, (err) => {
+      if (err) {
+        console.error('⚠️  Error inserting seed data:', err.message);
+      } else {
+        console.log('✅ Seed data inserted successfully');
+      }
+    });
+  } else {
+    console.error('❌ Seed file not found:', seedPath);
+  }
+}
 
 // Function to run migration if tables don't exist
 function runMigration() {
@@ -46,19 +81,9 @@ function runMigration() {
     } else {
       console.log('✅ Database tables created successfully');
       
-      // Run seed data in development
+      // Run seed data after creating tables
       if (env === 'development' || process.env.ENABLE_SEED === 'true') {
-        const seedPath = path.join(__dirname, 'seeds', 'sample_quiz.sql');
-        if (fs.existsSync(seedPath)) {
-          const seed = fs.readFileSync(seedPath, 'utf8');
-          db.exec(seed, (err) => {
-            if (err) {
-              console.error('⚠️  Error inserting seed data:', err.message);
-            } else {
-              console.log('✅ Seed data inserted');
-            }
-          });
-        }
+        runSeedData();
       }
     }
   });
