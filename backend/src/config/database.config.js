@@ -1,6 +1,6 @@
 module.exports = {
   development: {
-    storage: process.env.DB_PATH || 'src/database/quiz.db',
+    storage: process.env.DATABASE_PATH || process.env.DB_PATH || 'src/database/quiz.db',
     dialect: 'sqlite',
   },
   test: {
@@ -8,7 +8,7 @@ module.exports = {
     dialect: 'sqlite',
   },
   production: {
-    storage: process.env.DB_PATH || 'src/database/quiz.db',
+    storage: process.env.DATABASE_PATH || process.env.DB_PATH || './database.sqlite',
     dialect: 'sqlite',
   },
 };

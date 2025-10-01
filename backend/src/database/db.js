@@ -8,6 +8,8 @@ const dbConfig = config[env];
 
 console.log(`Environment: ${env}`);
 console.log(`Database path: ${dbConfig.storage}`);
+console.log(`ENABLE_SEED env var: ${process.env.ENABLE_SEED}`);
+console.log(`Should seed: ${env === 'development' || process.env.ENABLE_SEED === 'true'}`);
 
 const db = new sqlite3.Database(dbConfig.storage, (err) => {
   if (err) {
@@ -33,6 +35,7 @@ const db = new sqlite3.Database(dbConfig.storage, (err) => {
 
 // Function to check if data exists and seed if needed
 function checkAndSeedData() {
+  console.log(`Checking if seed data needed... (env: ${env}, ENABLE_SEED: ${process.env.ENABLE_SEED})`);
   if (env === 'development' || process.env.ENABLE_SEED === 'true') {
     db.get("SELECT COUNT(*) as count FROM quizzes", (err, row) => {
       if (err) {
@@ -44,14 +47,21 @@ function checkAndSeedData() {
         console.log(`✅ Database has ${row.count} quiz(es)`);
       }
     });
+  } else {
+    console.log('⚠️  Seed data check skipped (not in dev mode and ENABLE_SEED not true)');
   }
 }
 
 // Function to run seed data
 function runSeedData() {
   const seedPath = path.join(__dirname, 'seeds', 'sample_quiz.sql');
+  console.log(`Looking for seed file at: ${seedPath}`);
+  
   if (fs.existsSync(seedPath)) {
+    console.log('✅ Seed file found, reading...');
     const seed = fs.readFileSync(seedPath, 'utf8');
+    console.log(`Seed file size: ${seed.length} bytes`);
+    
     db.exec(seed, (err) => {
       if (err) {
         console.error('⚠️  Error inserting seed data:', err.message);
@@ -82,8 +92,12 @@ function runMigration() {
       console.log('✅ Database tables created successfully');
       
       // Run seed data after creating tables
+      console.log(`Checking if should seed after migration... (env: ${env}, ENABLE_SEED: ${process.env.ENABLE_SEED})`);
       if (env === 'development' || process.env.ENABLE_SEED === 'true') {
+        console.log('✅ Conditions met, running seed data...');
         runSeedData();
+      } else {
+        console.log('⚠️  Seed data skipped (not in dev mode and ENABLE_SEED not true)');
       }
     }
   });
