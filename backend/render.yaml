@@ -10,7 +10,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: ENABLE_SEED
-        value: true
+        value: "true"
       - key: PORT
         value: 10000
       - key: DATABASE_PATH
