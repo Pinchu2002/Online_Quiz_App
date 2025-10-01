@@ -63,7 +63,6 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-docs/ 
 # Runtime logs
 combined.log
 error.log
