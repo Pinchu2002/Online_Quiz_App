@@ -9,10 +9,11 @@ const dbConfig = config[env];
 
 console.log(`Running migrations for ${env} environment`);
 console.log(`Database path: ${dbConfig.storage}`);
+console.log(`Current working directory: ${process.cwd()}`);
 
 // Ensure database directory exists
 const dbDir = path.dirname(dbConfig.storage);
-if (!fs.existsSync(dbDir)) {
+if (!fs.existsSync(dbDir) && dbDir !== '.') {
   fs.mkdirSync(dbDir, { recursive: true });
   console.log(`Created database directory: ${dbDir}`);
 }
@@ -30,6 +31,8 @@ const db = new sqlite3.Database(dbConfig.storage, (err) => {
 const runMigration = () => {
   return new Promise((resolve, reject) => {
     const schemaPath = path.join(__dirname, 'migrations', '001_initial_schema.sql');
+    
+    console.log(`Looking for schema file at: ${schemaPath}`);
     
     if (!fs.existsSync(schemaPath)) {
       reject(new Error(`Schema file not found: ${schemaPath}`));
@@ -78,11 +81,14 @@ const runSeed = () => {
 // Main migration process
 const migrate = async () => {
   try {
+    console.log('Starting migration process...');
     await runMigration();
     
-    // Only run seed in development
-    if (env === 'development') {
+    // Only run seed in development or if explicitly requested
+    if (env === 'development' || process.env.RUN_SEED === 'true') {
       await runSeed();
+    } else {
+      console.log('Skipping seed data in production');
     }
     
     console.log('✅ Migration completed successfully');
@@ -91,10 +97,12 @@ const migrate = async () => {
         console.error('Error closing database:', err.message);
         process.exit(1);
       }
+      console.log('Database connection closed');
       process.exit(0);
     });
   } catch (error) {
     console.error('❌ Migration failed:', error.message);
+    console.error('Error stack:', error.stack);
     db.close();
     process.exit(1);
   }
